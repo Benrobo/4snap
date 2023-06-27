@@ -130,7 +130,7 @@ export default function Home() {
         </div>
       </div>
       {/* header */}
-      <div className="w-full h-auto z-[10] py-4 mt-7">
+      <div className="w-full h-auto min-h-[400px] z-[10] py-4 mt-7">
         <div className="w-full px-5 md:px-5 md:max-w-[70%] mx-auto text-center flex flex-col items-center justify-center">
           <p className="text-white-100 text-center pp-EB text-3xl md:text-5xl z-[10]">
             Discover, Share, & Execute Commands Anytime Anywhere
@@ -153,7 +153,7 @@ export default function Home() {
         </div>
       </div>
       {/* Content */}
-      <div className="w-full min-h-[750px] flex flex-col items-center justify-center">
+      <div className="w-full  min-h-[750px] flex flex-col items-center justify-start">
         <div className="w-auto max-w-[300px]  md:max-w-[300px] flex flex-col items-center justify-center bg-gradient-to-b from-white-600 to-dark-300 border-solid border-[1px] border-white-600 mx-auto text-center z-[10] rounded-[30px]">
           <span className="text-white-100 pp-SB text-[10px] px-2 py-1 ">
             {renderTabTitle()}
