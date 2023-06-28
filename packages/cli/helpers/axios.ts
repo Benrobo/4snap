@@ -1,14 +1,8 @@
 import axios, { AxiosError, AxiosInstance } from "axios";
 import storage from "../config/index.js";
-import dotenv from "dotenv";
 
-dotenv.config();
-
+const baseURL = `https://4snapp.vercel.app/api`;
 // const baseURL = `http://localhost:3000/api`;
-const baseURL =
-  typeof process.env.NODE_ENV === "undefined"
-    ? `https://4snapp.vercel.app/api`
-    : `http://localhost:3000/api`;
 
 const $http: AxiosInstance = axios.create({
   baseURL,

@@ -54,30 +54,34 @@ async function executeLocalCmd(commandName: string) {
     const sp = spinner();
     sp.start("Executing..");
 
-    exec(command, { cwd: process.cwd() }, (err, stdout, stderr) => {
-      if (err !== null) {
+    exec(
+      command.split(",").join(" && "),
+      { cwd: process.cwd(), timeout: 5000 },
+      (err, stdout, stderr) => {
+        if (err !== null) {
+          sp.stop(
+            chalk.redBright(
+              `Failed to execute '${chalk.underline(commandName)}': ${
+                err ?? stderr
+              }`
+            )
+          );
+          outro("Done");
+          process.exit(0);
+        }
+
         sp.stop(
-          chalk.redBright(
-            `Failed to execute '${chalk.underline(commandName)}': ${
-              err ?? stderr
-            }`
+          chalk.yellowBright(
+            ` ✨ Successfully executed ${chalk.bold(
+              chalk.underline(commandName)
+            )} `
           )
         );
+        // output the given output from stdout
+        if (stdout) console.log(`\n ${stdout}`);
         outro("Done");
-        process.exit(0);
       }
-
-      sp.stop(
-        chalk.yellowBright(
-          ` ✨ Successfully executed ${chalk.bold(
-            chalk.underline(commandName)
-          )} `
-        )
-      );
-      // output the given output from stdout
-      if (stdout) console.log(`\n ${stdout}`);
-      outro("Done");
-    });
+    );
   }
 }
 
